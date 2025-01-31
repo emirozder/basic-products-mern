@@ -4,12 +4,12 @@ export const useProductStore = create((set) => ({
   products: [],
   setProducts: (products) => set({ products }),
   getProducts: async () => {
-    const res = await fetch("http://localhost:5000/api/products")
+    const res = await fetch("/api/products")
     const data = await res.json()
     set({ products: data?.data })
   },
   createProduct: async (product) => {
-    const res = await fetch("http://localhost:5000/api/products", {
+    const res = await fetch("/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export const useProductStore = create((set) => ({
     return data
   },
   updateProduct: async (pid, product) => {
-    const res = await fetch(`http://localhost:5000/api/products/${pid}`, {
+    const res = await fetch(`/api/products/${pid}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export const useProductStore = create((set) => ({
     return data
   },
   deleteProduct: async (pid) => {
-    const res = await fetch(`http://localhost:5000/api/products/${pid}`, {
+    const res = await fetch(`/api/products/${pid}`, {
       method: "DELETE",
     });
     const data = await res.json();
